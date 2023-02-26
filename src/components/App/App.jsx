@@ -9,8 +9,8 @@ import { Filter } from 'components/Filter';
 import { Notification } from 'components/Notification';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+//   import 'react-toastify/dist/ReactToastify.css';
 
 
 export class App extends Component {
@@ -47,10 +47,11 @@ export class App extends Component {
     let isNumberExist = this.state.contacts.some(el => el.number === contact.number);
     let isNameExist = this.state.contacts.some(el => el.name === contact.name);
     if (isNameExist && isNumberExist) {
-      // NotificationManager.error(`Ooops, contact with name ${contact.name} and number ${contact.number} is already in your phonebook`);
-        toast.error(`Ooops, contact with name ${contact.name} and number ${contact.number} is already in your phonebook`, {
-        position: toast.POSITION.TOP_RIGHT
-      });
+      NotificationManager.error(`Ooops, contact with name ${contact.name} and number ${contact.number} is already in your phonebook`);
+        // toast.error(`Ooops, contact with name ${contact.name} and number ${contact.number} is already in your phonebook`, {
+        // position: toast.POSITION.TOP_RIGHT
+    // }
+      // );
       return isContactExist=true;
     }
     if (isNameExist) {
@@ -107,7 +108,7 @@ export class App extends Component {
           }
         </Section>
         <GlobalStyle />
-        <ToastContainer />
+        {/* <ToastContainer /> */}
        <NotificationContainer/>
       </Container>
       
