@@ -17,6 +17,7 @@ export function Contacts({contacts, onDeleteContact}) {
             type='button'
             className='deleteBtn'
             onClick={() => onDeleteContact(id)}
+            
           >
             {renderIcons('delete', iconSize.sm)}
           </DeleteContactButton>

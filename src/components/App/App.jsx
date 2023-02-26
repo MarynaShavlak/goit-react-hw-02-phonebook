@@ -7,7 +7,8 @@ import { ContactForm } from 'components/ContactForm';
 import { Contacts } from 'components/Contacts';
 import { Filter } from 'components/Filter';
 import { Notification } from 'components/Notification';
-
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 
 export class App extends Component {
@@ -44,18 +45,15 @@ export class App extends Component {
     let isNumberExist = this.state.contacts.some(el => el.number === contact.number);
     let isNameExist = this.state.contacts.some(el => el.name === contact.name);
     if (isNameExist && isNumberExist) {
-      
-       alert(`Ooops, contact with name ${contact.name} and number ${contact.number} is already in your phonebook`);
+      NotificationManager.error(`Ooops, contact with name ${contact.name} and number ${contact.number} is already in your phonebook`);
       return isContactExist=true;
     }
     if (isNameExist) {
-      alert(`Ooops, contact with name ${contact.name} is already in your phonebook`)
-      
+            NotificationManager.error(`Ooops, contact with name ${contact.name} is already in your phonebook`);
       return isContactExist=true;
     }
     if (isNumberExist) {
-      alert(`Ooops, contact with number ${contact.number} is already in your phonebook`)
-      
+                  NotificationManager.error(`Ooops, contact with number ${contact.number} is already in your phonebook`);
       return isContactExist=true;
     }
     
@@ -104,7 +102,7 @@ export class App extends Component {
           }
         </Section>
         <GlobalStyle />
-       
+       <NotificationContainer/>
       </Container>
       
     );
